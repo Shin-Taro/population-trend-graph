@@ -1,0 +1,16 @@
+{
+  "sortToTop": [
+    "name",
+    "version",
+    "author",
+    "repository",
+    "description",
+    "license",
+    "engines",
+    "packageManager",
+    "main",
+    "scripts",
+    "dependencies",
+    "devDependencies"
+  ]
+}

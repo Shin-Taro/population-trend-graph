@@ -10,9 +10,11 @@
     "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
     "lint-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --cache",
     "lint-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --check --cache --ignore-path .gitignore",
+    "lint:pack": "fixpack --dryRun",
     "fix": "run-p \"fix:*\"",
     "fix:ts": "run-s fix-ts-by-eslint fix-ts-by-prettier",
     "fix-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --fix",
+    "fix:pack": "fixpack",
     "fix-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --write --ignore-path .gitignore"
   },
   "dependencies": {
@@ -27,6 +29,7 @@
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "9.1.0",
+    "fixpack": "4.0.0",
     "npm-run-all2": "6.2.0",
     "prettier": "3.3.0",
     "typescript": "5.4.5"
