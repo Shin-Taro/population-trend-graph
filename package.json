@@ -2,6 +2,12 @@
   "name": "population-trend-graph",
   "version": "0.1.0",
   "description": "This is a simple page application for population trend graph.",
+  "engines": {
+    "node": "20.14.0",
+    "yarn": "4.2.2",
+    "npm": "yarnを使用してください",
+    "pnpm": "yarnを使用してください"
+  },
   "packageManager": "yarn@4.2.2",
   "main": "",
   "scripts": {
