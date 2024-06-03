@@ -63,5 +63,14 @@
     ],
     "unicorn/no-array-callback-reference": "off"
   },
+  "overrides": [
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        // s-cの記述を後にするため無効
+        "no-use-before-define": "off"
+      }
+    }
+  ],
   "ignorePatterns": ["node_modules/*", "**/.next/**"]
 }
