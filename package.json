@@ -11,12 +11,15 @@
     "lint-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --cache",
     "lint-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --check --cache --ignore-path .gitignore",
     "lint:pack": "fixpack --dryRun",
+    "lint-config-by-prettier": "prettier \"./*.{js,json}\" --check --cache --ignore-path .gitignore",
     "lint-editorconfig": "editorconfig-checker",
+    "lint:config": "run-s lint-config-by-prettier lint-editorconfig",
     "fix": "run-p \"fix:*\"",
     "fix:ts": "run-s fix-ts-by-eslint fix-ts-by-prettier",
     "fix-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --fix",
     "fix:pack": "fixpack",
-    "fix-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --write --ignore-path .gitignore"
+    "fix-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --write --ignore-path .gitignore",
+    "fix:config": "prettier \"./*.{js,json}\" --write --ignore-path .gitignore"
   },
   "dependencies": {
     "next": "14.2.3",
