@@ -1,25 +1,27 @@
 {
   "name": "population-trend-graph",
   "version": "0.1.0",
-  "private": true,
+  "description": "This is a simple page application for population trend graph.",
+  "packageManager": "yarn@4.2.2",
+  "main": "",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
+    "fix": "run-p \"fix:*\"",
+    "fix-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --fix",
+    "fix-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --write --ignore-path .gitignore",
+    "fix:config": "prettier \"./*.{js,json}\" --write --ignore-path .gitignore",
+    "fix:pack": "fixpack",
+    "fix:ts": "run-s fix-ts-by-eslint fix-ts-by-prettier",
     "lint": "run-p \"lint:*\"",
-    "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
-    "lint-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --cache",
-    "lint-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --check --cache --ignore-path .gitignore",
-    "lint:pack": "fixpack --dryRun",
     "lint-config-by-prettier": "prettier \"./*.{js,json}\" --check --cache --ignore-path .gitignore",
     "lint-editorconfig": "editorconfig-checker",
+    "lint-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --cache",
+    "lint-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --check --cache --ignore-path .gitignore",
     "lint:config": "run-s lint-config-by-prettier lint-editorconfig",
-    "fix": "run-p \"fix:*\"",
-    "fix:ts": "run-s fix-ts-by-eslint fix-ts-by-prettier",
-    "fix-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --fix",
-    "fix:pack": "fixpack",
-    "fix-ts-by-prettier": "prettier \"./src/**/*.{ts,tsx}\" --write --ignore-path .gitignore",
-    "fix:config": "prettier \"./*.{js,json}\" --write --ignore-path .gitignore"
+    "lint:pack": "fixpack --dryRun",
+    "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
+    "start": "next start"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -39,5 +41,5 @@
     "prettier": "3.3.0",
     "typescript": "5.4.5"
   },
-  "packageManager": "yarn@4.2.2"
+  "private": true
 }
