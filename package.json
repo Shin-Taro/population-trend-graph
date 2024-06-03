@@ -12,6 +12,7 @@
   "main": "",
   "scripts": {
     "build": "next build",
+    "check-code": "run-p type-check lint spell-check",
     "dev": "next dev",
     "fix": "run-p \"fix:*\"",
     "fix-ts-by-eslint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings 0 --fix",
@@ -27,8 +28,9 @@
     "lint:config": "run-s lint-config-by-prettier lint-editorconfig",
     "lint:pack": "fixpack --dryRun",
     "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
+    "spell-check": "cspell \"./src/**/*.{ts,tsx}\" --gitignore --no-progress",
     "start": "next start",
-    "spell-check": "cspell \"./src/**/*.{ts,tsx}\" --gitignore --no-progress"
+    "type-check": "tsc"
   },
   "dependencies": {
     "next": "14.2.3",
