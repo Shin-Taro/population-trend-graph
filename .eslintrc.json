@@ -4,6 +4,6 @@
     "browser": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "next", "next/core-web-vitals"],
+  "extends": ["eslint:recommended", "prettier", "next", "next/core-web-vitals"],
   "ignorePatterns": ["node_modules/*", "**/.next/**"]
 }
