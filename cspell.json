@@ -1,0 +1,34 @@
+{
+  "language": "en",
+  "dictionaries": [
+    "en",
+    "typescript",
+    "node",
+    "html",
+    "css",
+    "npm",
+    "fonts",
+    "filetypes",
+    "package",
+    "web",
+    "color",
+    "domain"
+  ],
+  "dictionaryDefinitions": [
+    {
+      // npm package names
+      "name": "package",
+      "path": "./configs/cspell/package.txt"
+    },
+    {
+      // web related terms
+      "name": "web",
+      "path": "./configs/cspell/web.txt"
+    },
+    {
+      // color codes
+      "name": "color",
+      "path": "./configs/cspell/color.txt"
+    }
+  ]
+}

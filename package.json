@@ -21,7 +21,8 @@
     "lint:config": "run-s lint-config-by-prettier lint-editorconfig",
     "lint:pack": "fixpack --dryRun",
     "lint:ts": "run-s lint-ts-by-eslint lint-ts-by-prettier",
-    "start": "next start"
+    "start": "next start",
+    "spell-check": "cspell \"./src/**/*.{ts,tsx}\" --gitignore --no-progress"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -32,6 +33,7 @@
     "@types/node": "20.14.0",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
+    "cspell": "8.8.3",
     "editorconfig-checker": "5.1.5",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
