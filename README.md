@@ -15,11 +15,21 @@
 
 他のパッケージマネージャーで実行しようとするとエラーになります
 
+### 環境変数
+
+プロジェクトルートに `.env` ファイルを作成し、`NEXT_PUBLIC_RESAS_API_KEY` に有効なAPIキーを設定してください。
+
 ### ローカルサーバの起動
 
-プロジェクトルートで `yarn dev` を実行
+#### 開発サーバ
 
-http://localhost:3000 で画面を確認できます
+プロジェクトルートで `yarn dev` を実行し、http://localhost:3000 で画面を確認できます。
+
+#### 本番ビルド
+
+プロジェクトルートで `yarn build` を実行しbuild、その後 `yarn start` で本番用サーバが起動します。
+
+または `docker compose up` でDocker containerを起動、http://localhost:3000 で画面を確認できます。
 
 ### コードチェック
 
