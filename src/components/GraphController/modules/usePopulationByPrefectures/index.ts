@@ -28,6 +28,35 @@ const extractGraphData = (
   }))
 }
 
+// TODO: 別ファイルに切り出す
+const removeGraphData = (
+  targetData: PopulationGraphData[],
+  prefectureCode: number,
+): PopulationGraphData[] =>
+  targetData.map((data) => {
+    // 特定要素を除外するため
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { [prefectureCode]: _, ...rest } = data
+    return rest
+  })
+
+// TODO: 別ファイルに切り出す
+const mergeGraphData = (existData: PopulationGraphData[], targetData: PopulationGraphData[]) =>
+  targetData.map((data) => {
+    const newData = existData.find((target) => target[GraphDataKey] === data[GraphDataKey])
+    if (newData) {
+      return { ...data, ...newData }
+    }
+    return data
+  })
+
+// TODO: 適当過ぎるので改善する
+const convertPrefectureCodeToColor = (prefectureCode: number): string => {
+  const largeNumber = prefectureCode * 999
+  const colorCode = largeNumber.toString(16).slice(0, 6)
+  return `#${colorCode}`
+}
+
 export const usePopulationByPrefectures = (prefectures: PrefecturesResponse) => {
   const [prefectureStateList, setPrefectureStateList] = useState(
     convertToPrefectureStateList(prefectures),
@@ -50,8 +79,8 @@ export const usePopulationByPrefectures = (prefectures: PrefecturesResponse) => 
             )?.isChecked ?? false
 
           return isAlreadySelected
-            ? previous.filter((data) => data[prefectureCode] !== prefectureCode)
-            : [...previous, ...targetGraphData]
+            ? removeGraphData(previous, prefectureCode)
+            : mergeGraphData(previous, targetGraphData)
         })
 
         // checkboxの管理
@@ -67,11 +96,13 @@ export const usePopulationByPrefectures = (prefectures: PrefecturesResponse) => 
       }
     }
 
+  // TODO: 関数化して別ファイルに切り出す
   const selectedPrefectureList = prefectureStateList.flatMap((prefectureState) =>
     prefectureState.isChecked
       ? {
+          prefectureCode: prefectureState.prefectureCode,
           prefectureName: prefectureState.prefectureName,
-          colorCode: `#${Math.floor(Math.random() * 16_777_215).toString(16)}`,
+          colorCode: convertPrefectureCodeToColor(prefectureState.prefectureCode),
         }
       : [],
   )
