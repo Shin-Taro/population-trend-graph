@@ -14,7 +14,7 @@ type Props = {
   initPrefectureChangeHandler: (prefectureCode: number) => ChangeEventHandler
 }
 
-export const PrefectureCheckbox: FC<Props> = (props) => {
+export const PrefectureCheckboxList: FC<Props> = (props) => {
   const { prefectureStateList, initPrefectureChangeHandler } = props
 
   return (

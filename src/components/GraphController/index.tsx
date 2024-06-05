@@ -3,7 +3,7 @@ import { PrefecturesResponse } from "@/shared/types/PrefecturesResponse"
 import styled from "styled-components"
 import { FontSize } from "@/shared/const/FontSize"
 import { Graph } from "../Graph"
-import { PrefectureCheckbox } from "../PrefectureCheckbox"
+import { PrefectureCheckboxList } from "../PrefectureCheckboxList"
 import { usePopulationByPrefectures } from "./modules/usePopulationByPrefectures"
 
 type Props = {
@@ -23,7 +23,7 @@ export const GraphController: FC<Props> = (props) => {
     <>
       <Title>都道府県</Title>
       <CheckboxContainer>
-        <PrefectureCheckbox
+        <PrefectureCheckboxList
           prefectureStateList={prefectureStateList}
           initPrefectureChangeHandler={initPrefectureChangeHandler}
         />
