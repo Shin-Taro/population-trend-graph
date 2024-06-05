@@ -2,7 +2,7 @@ import { GraphDataKey } from "@/shared/const/GraphDataKey"
 import { PopulationGraphData } from "@/shared/types/PopulationGraphData"
 import { PopulationResponse } from "@/shared/types/PopulationResponse"
 import { PrefecturesResponse } from "@/shared/types/PrefecturesResponse"
-import { resasApiClient } from "@/shared/utiles/resasApiClient"
+import { resasApiClient } from "@/shared/utils/resasApiClient"
 import { ChangeEventHandler, useState } from "react"
 
 // TODO: 別ファイルに切り出す
