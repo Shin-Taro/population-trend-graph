@@ -1,64 +1,16 @@
-import { GraphDataKey } from "@/shared/const/GraphDataKey"
 import { PopulationGraphData } from "@/shared/types/PopulationGraphData"
-import { PopulationResponse } from "@/shared/types/PopulationResponse"
 import { PrefecturesResponse } from "@/shared/types/PrefecturesResponse"
 import { resasApiClient } from "@/shared/utils/resasApiClient"
 import { ChangeEventHandler, useState } from "react"
-
-// TODO: 別ファイルに切り出す
-const convertToPrefectureStateList = (prefectures: PrefecturesResponse) =>
-  prefectures.result.map((prefecture) => ({
-    prefectureName: prefecture.prefName,
-    prefectureCode: prefecture.prefCode,
-    isChecked: false,
-  }))
-
-// TODO: 別ファイルに切り出す
-const extractGraphData = (
-  prefectureCode: number,
-  populationResponse: PopulationResponse,
-): PopulationGraphData[] => {
-  const { data } = populationResponse.result
-  const populationResult =
-    data.find((populationData) => populationData.label === "総人口")?.data ?? []
-
-  return populationResult.map((targetData) => ({
-    [prefectureCode]: targetData.value,
-    [GraphDataKey]: targetData.year,
-  }))
-}
-
-// TODO: 別ファイルに切り出す
-const removeGraphData = (
-  targetData: PopulationGraphData[],
-  prefectureCode: number,
-): PopulationGraphData[] =>
-  targetData.map((data) => {
-    // 特定要素を除外するため
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { [prefectureCode]: _, ...rest } = data
-    return rest
-  })
-
-// TODO: 別ファイルに切り出す
-const mergeGraphData = (existData: PopulationGraphData[], targetData: PopulationGraphData[]) =>
-  targetData.map((data) => {
-    const newData = existData.find((target) => target[GraphDataKey] === data[GraphDataKey])
-    if (newData) {
-      return { ...data, ...newData }
-    }
-    return data
-  })
-
-// TODO: 適当過ぎるので改善する
-const convertPrefectureCodeToColor = (prefectureCode: number): string => {
-  const largeNumber = prefectureCode * 999
-  const colorCode = largeNumber.toString(16).slice(0, 6)
-  return `#${colorCode}`
-}
+import { PrefectureState } from "@/shared/types/PrefectureState"
+import { removeGraphData } from "./modules/removeGraphData"
+import { convertToPrefectureStateList } from "./modules/convertToPrefectureStateList"
+import { extractGraphData } from "./modules/extractGraphData"
+import { mergeGraphData } from "./modules/mergeGraphData"
+import { convertToPrefecturesWithColor } from "./modules/convertToPrefecturesWithColor"
 
 export const usePopulationByPrefectures = (prefectures: PrefecturesResponse) => {
-  const [prefectureStateList, setPrefectureStateList] = useState(
+  const [prefectureStateList, setPrefectureStateList] = useState<PrefectureState[]>(
     convertToPrefectureStateList(prefectures),
   )
 
@@ -96,16 +48,7 @@ export const usePopulationByPrefectures = (prefectures: PrefecturesResponse) => 
       }
     }
 
-  // TODO: 関数化して別ファイルに切り出す
-  const selectedPrefectureList = prefectureStateList.flatMap((prefectureState) =>
-    prefectureState.isChecked
-      ? {
-          prefectureCode: prefectureState.prefectureCode,
-          prefectureName: prefectureState.prefectureName,
-          colorCode: convertPrefectureCodeToColor(prefectureState.prefectureCode),
-        }
-      : [],
-  )
+  const selectedPrefectureList = convertToPrefecturesWithColor(prefectureStateList)
 
   return {
     prefectureStateList,
