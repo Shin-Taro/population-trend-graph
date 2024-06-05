@@ -1,11 +1,11 @@
-import { GraphController } from "@/components/GraphController"
 import { GetServerSideProps, NextPage } from "next"
 import { ComponentPropsWithoutRef } from "react"
-import { resasApiClient } from "@/shared/utiles/resasApiClient"
+import { resasApiClient } from "@/shared/utils/resasApiClient"
+import { HomeTemplate } from "@/components/HomeTemplate"
 
-type PageProps = ComponentPropsWithoutRef<typeof GraphController>
+type PageProps = ComponentPropsWithoutRef<typeof HomeTemplate>
 
-const Home: NextPage<PageProps> = (props) => <GraphController {...props} />
+const Home: NextPage<PageProps> = (props) => <HomeTemplate {...props} />
 
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   // TODO: エラーハンドリング

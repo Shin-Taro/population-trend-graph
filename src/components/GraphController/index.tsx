@@ -18,12 +18,12 @@ export const GraphController: FC<Props> = (props) => {
   } = usePopulationByPrefectures(prefecturesData)
 
   return (
-    <div>
+    <>
       <PrefectureCheckbox
         prefectureStateList={prefectureStateList}
         initPrefectureChangeHandler={initPrefectureChangeHandler}
       />
       <Graph selectedPrefectureList={selectedPrefectureList} populationData={populationData} />
-    </div>
+    </>
   )
 }
