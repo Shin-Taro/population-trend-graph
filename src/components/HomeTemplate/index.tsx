@@ -1,6 +1,7 @@
 import { PrefecturesResponse } from "@/shared/types/PrefecturesResponse"
 import { FC } from "react"
 import styled from "styled-components"
+import { MediaQuery } from "@/shared/const/MediaQuery"
 import { GraphController } from "../GraphController"
 
 type Props = {
@@ -17,6 +18,14 @@ export const HomeTemplate: FC<Props> = (props) => (
 )
 
 const Container = styled.div`
-  width: 85vw;
+  margin-top: 30px;
   margin-inline: auto;
+
+  ${MediaQuery.MEDIA_QUERY_SP} {
+    width: 95vw;
+  }
+
+  ${MediaQuery.MEDIA_QUERY_PC} {
+    width: 85vw;
+  }
 `
