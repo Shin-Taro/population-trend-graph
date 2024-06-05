@@ -1,13 +1,8 @@
 import { Colors } from "@/shared/const/Colors"
 import { FontSize } from "@/shared/const/FontSize"
+import { PrefectureState } from "@/shared/types/PrefectureState"
 import { ChangeEventHandler, FC } from "react"
 import styled from "styled-components"
-
-type PrefectureState = {
-  prefectureName: string
-  prefectureCode: number
-  isChecked: boolean
-}
 
 type Props = {
   prefectureStateList: PrefectureState[]
