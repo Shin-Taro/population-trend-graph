@@ -1,5 +1,6 @@
 import { GraphDataKey } from "@/shared/const/GraphDataKey"
 import { PopulationGraphData } from "@/shared/types/PopulationGraphData"
+import { PrefectureWithColor } from "@/shared/types/PrefectureWithColor"
 import { FC } from "react"
 import {
   CartesianGrid,
@@ -12,15 +13,9 @@ import {
   YAxis,
 } from "recharts"
 
-type SelectedPrefecture = {
-  prefectureName: string
-  prefectureCode: number
-  colorCode: string
-}
-
 type Props = {
   populationData: PopulationGraphData[]
-  selectedPrefectureList: SelectedPrefecture[]
+  selectedPrefectureList: PrefectureWithColor[]
 }
 
 // TODO: 細かいデザインをWFに近づける
